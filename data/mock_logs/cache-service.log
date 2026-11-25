@@ -1,0 +1,3 @@
+2026-11-25 10:05:01.004 ERROR [cache-service] [trace=req-cache-6001] io.lettuce.core.RedisCommandExecutionException: OOM command not allowed when used memory > 'maxmemory' key=session:audit:202611
+2026-11-25 10:08:19.772 ERROR [cache-service] [trace=req-cache-6002] io.lettuce.core.RedisCommandTimeoutException: Command timed out after 2 second(s) while executing KEYS *
+	at com.logops.cache.CacheAdminService.scanInvalidKeys(CacheAdminService.java:22)

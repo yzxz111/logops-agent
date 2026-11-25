@@ -1,0 +1,26 @@
+2026-11-25 10:00:01.200 INFO  [order-service] [trace=req-gw-1001] Start createOrder user_phone=13812345678 order_no=ORD20261125001
+2026-11-25 10:00:31.210 ERROR [order-service] [trace=req-gw-1001] Failed to acquire DB connection in createOrder
+java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:197)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:116)
+	at org.springframework.jdbc.datasource.DataSourceTransactionManager.doBegin(DataSourceTransactionManager.java:265)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.startTransaction(AbstractPlatformTransactionManager.java:400)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:595)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:382)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at java.lang.Thread.run(Thread.java:1583)
+	at com.logops.order.OrderService.createOrder(OrderService.java:45)
+2026-11-25 10:03:22.400 ERROR [order-service] [trace=req-ord-2001] Deadlock found when trying to get lock; try restarting transaction (SQL Error: 1213)
+com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+	at com.logops.order.OrderBatchUpdater.updateOrderAndStock(OrderBatchUpdater.java:36)
+2026-11-25 10:06:15.888 WARN  [order-service] [trace=req-ord-2002] SlowQuery detected: 8420ms SQL=SELECT * FROM t_order WHERE order_no = 202611250099 (full table scan due to implicit conversion)
+2026-11-25 10:12:08.512 ERROR [order-service] [trace=req-ord-2003] java.lang.OutOfMemoryError: Java heap space
+	at java.util.Arrays.copyOf(Arrays.java:3512)
+	at com.logops.order.OrderExportService.exportAllOrders(OrderExportService.java:29)
+2026-11-25 10:15:44.009 ERROR [order-service] [trace=req-ord-2004] org.apache.kafka.common.errors.TimeoutException: Expiring 18 record(s) for order-events-0: 30001 ms has passed since batch creation (NotLeaderOrFollowerException)
+	at com.logops.order.OrderEventPublisher.publishCreated(OrderEventPublisher.java:22)

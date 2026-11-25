@@ -1,0 +1,3 @@
+2026-11-25 10:06:33.100 WARN  [notification-service] [trace=req-mq-7001] Consumer group notify-sms-group Revoking previously assigned partitions [sms-topic-0, sms-topic-1]
+2026-11-25 10:06:33.245 ERROR [notification-service] [trace=req-mq-7001] org.apache.kafka.clients.consumer.CommitFailedException: Commit cannot be completed since the group has already rebalanced (max.poll.interval.ms=300000 exceeded) lag=42800
+	at com.logops.notify.SmsBatchConsumer.onMessage(SmsBatchConsumer.java:29)

@@ -1,0 +1,4 @@
+2026-11-25 10:04:40.212 ERROR [inventory-service] [trace=req-inv-5001] Lock wait timeout exceeded; try restarting transaction (SQL Error: 1205) for sku_id=SKU-9981
+2026-11-25 10:07:11.655 WARN  [inventory-service] [trace=req-inv-5002] Cache avalanche alert: 1240 keys expired at 10:07:00 causing 4820 DB fallback queries/sec
+2026-11-25 10:09:55.318 ERROR [inventory-service] [trace=req-inv-5003] java.lang.IllegalMonitorStateException: attempt to unlock lock, not locked by current thread by node id: 81f3 for key=lock:sku:SKU-8821
+	at com.logops.inventory.InventoryLockService.deductWithLock(InventoryLockService.java:34)

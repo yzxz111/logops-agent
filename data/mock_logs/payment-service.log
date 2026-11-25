@@ -1,0 +1,6 @@
+2026-11-25 10:02:10.900 WARN  [payment-service] [trace=req-gw-1002] GC overhead limit exceeded, Full GC (Allocation Failure) paused 4820ms
+2026-11-25 10:02:11.290 FATAL [payment-service] [trace=req-gw-1002] Container terminated by kernel: OOMKilled Exit Code 137 (DirectMemory exceeded cgroup 2Gi limit)
+2026-11-25 10:10:03.401 ERROR [payment-service] [trace=req-pay-4001] java.util.concurrent.RejectedExecutionException: Task com.logops.pay.AsyncRiskTask@4a2b rejected from ThreadPoolExecutor[Running, pool size = 16, active threads = 16, queued tasks = 200]
+	at com.logops.pay.PaymentAsyncExecutor.submitRiskCheck(PaymentAsyncExecutor.java:33)
+2026-11-25 10:13:20.119 ERROR [payment-service] [trace=req-pay-4002] DuplicateKeyException: Duplicate entry 'TR202611258877' for key 'uk_trade_no' in PaymentCallbackService.onNotify
+	at com.logops.pay.PaymentCallbackService.onNotify(PaymentCallbackService.java:27)

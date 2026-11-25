@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 1500ms # 过短导致慢订单请求触发 504 ReadTimeoutException
+        pool:
+          max-idle-time: 65000ms # 大于下游 Tomcat keep-alive-timeout(60s)，易引发 502 PrematureCloseException
+      routes:
+        - id: order-service-route
+          uri: lb://order-service
+          predicates:
+            - Path=/api/v1/orders/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 50
+                redis-rate-limiter.burstCapacity: 100
+            - name: CircuitBreaker
+              args:
+                name: orderServiceCB
+                fallbackUri: forward:/fallback/order

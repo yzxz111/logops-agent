@@ -1,0 +1,20 @@
+2026-11-25 10:00:01.102 INFO  [gateway] [trace=req-gw-1001] Route matched: /api/v1/orders -> lb://order-service
+2026-11-25 10:00:02.615 ERROR [gateway] [trace=req-gw-1001] 504 Gateway Timeout on /api/v1/orders/create, upstream=10.24.8.12:8081
+io.netty.handler.timeout.ReadTimeoutException: null
+	at io.netty.handler.timeout.ReadTimeoutHandler.readTimedOut(ReadTimeoutHandler.java:150)
+	at org.springframework.cloud.gateway.filter.NettyRoutingFilter.lambda$filter$0(NettyRoutingFilter.java:122)
+	at com.gateway.filter.MetricsTraceFilter.filter(MetricsTraceFilter.java:48)
+2026-11-25 10:02:11.304 ERROR [gateway] [trace=req-gw-1002] 502 Bad Gateway calling http://10.24.8.19:8082/pay/notify
+reactor.netty.http.client.PrematureCloseException: Connection prematurely closed BEFORE response
+	at reactor.netty.http.client.HttpClientOperations.onInboundClose(HttpClientOperations.java:530)
+	at com.gateway.filter.AuthHeaderRelayFilter.filter(AuthHeaderRelayFilter.java:31)
+2026-11-25 10:05:19.882 WARN  [gateway] [trace=req-gw-1003] HTTP 429 Too Many Requests: RateLimiterFilter blocked request tenant=tenant_vip_02 path=/v1/chat/completions replenishRate=50 burstCapacity=100 Retry-After=2
+2026-11-25 10:07:45.019 ERROR [gateway] [trace=req-gw-1004] HTTP 503 Service Unavailable: CircuitBreaker 'orderServiceCB' is OPEN
+io.github.resilience4j.circuitbreaker.CallNotPermittedException: CircuitBreaker 'orderServiceCB' is OPEN and does not permit further calls
+	at com.gateway.fallback.OrderFallbackHandler.handle(OrderFallbackHandler.java:24)
+2026-11-25 10:09:12.441 ERROR [gateway] [trace=req-gw-1005] HTTP 413 Payload Too Large: Exceeded limit on max bytes to buffer : 262144
+org.springframework.core.io.buffer.DataBufferLimitException: Exceeded limit on max bytes to buffer : 262144
+	at org.springframework.core.io.buffer.LimitedDataBufferList.raiseLimitException(LimitedDataBufferList.java:99)
+2026-11-25 10:11:30.910 ERROR [gateway] [trace=req-gw-1006] ServiceUnavailableException: Unable to find instance for payment-service in nacos namespace=prod-cn
+2026-11-25 10:14:02.118 ERROR [gateway] [trace=req-gw-1007] javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: timestamp check failed (CertificateExpiredException: NotAfter: 2026-11-20)
+	at com.gateway.ssl.PartnerHttpClientFactory.create(PartnerHttpClientFactory.java:42)
