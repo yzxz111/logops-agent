@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.agent.graph import LogOpsAgentService
 from app.api.middleware import RequestIdMiddleware
@@ -41,8 +44,27 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.state.gateway_client = gateway_client
     application.state.agent_service = agent_service
 
+    application.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "http://localhost:4173",
+            "http://127.0.0.1:4173",
+        ],
+        allow_origin_regex=r"http://(localhost|127\.0\.0\.1):\d+",
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+        expose_headers=["X-Request-ID"],
+    )
     application.add_middleware(RequestIdMiddleware)
     application.include_router(router)
+
+    frontend_dist = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+    if frontend_dist.is_dir():
+        application.mount("/", StaticFiles(directory=str(frontend_dist), html=True), name="frontend")
+
     return application
 
 

@@ -203,7 +203,12 @@ class LogOpsAgentService:
         )
         yield {
             "event": "start",
-            "data": {"request_id": initial["request_id"], "thread_id": initial["thread_id"]},
+            "data": {
+                "request_id": initial["request_id"],
+                "thread_id": initial["thread_id"],
+                "max_steps": initial["max_steps"],
+                "token_budget": initial["token_budget"],
+            },
         }
 
         async for chunk in self.graph.astream(initial, config=config, stream_mode="updates"):
@@ -211,15 +216,37 @@ class LogOpsAgentService:
                 if node_name == "__interrupt__":
                     interrupt_obj = node_output[0] if isinstance(node_output, (list, tuple)) and node_output else node_output
                     payload = getattr(interrupt_obj, "value", interrupt_obj)
-                    yield {"event": "human_confirm_required", "data": payload}
+                    snapshot_vals = self.graph.get_state(config).values
+                    enriched_payload = dict(payload) if isinstance(payload, dict) else {"value": payload}
+                    enriched_payload["snapshot"] = self._extract_summary(snapshot_vals)
+                    yield {"event": "human_confirm_required", "data": enriched_payload}
                     return
+
+                out = node_output if isinstance(node_output, dict) else {}
+                event_data: dict[str, Any] = {
+                    "node": node_name,
+                    "step_count": out.get("step_count"),
+                    "token_used": out.get("token_used"),
+                    "circuit_breaker_reason": out.get("circuit_breaker_reason", ""),
+                }
+                for key in (
+                    "extracted_signals",
+                    "redaction_counts",
+                    "rewritten_queries",
+                    "rag_citations",
+                    "tool_calls",
+                    "relevance_score",
+                    "is_relevant",
+                    "retry_count",
+                    "requires_human_confirm",
+                    "high_risk_actions",
+                    "trace_events",
+                ):
+                    if key in out:
+                        event_data[key] = out[key]
                 yield {
                     "event": "node_update",
-                    "data": {
-                        "node": node_name,
-                        "step_count": node_output.get("step_count") if isinstance(node_output, dict) else None,
-                        "token_used": node_output.get("token_used") if isinstance(node_output, dict) else None,
-                    },
+                    "data": event_data,
                 }
 
         final_state = self.graph.get_state(config).values
