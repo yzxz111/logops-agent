@@ -9,12 +9,14 @@ __pycache__/
 *.pyc
 .pytest_cache/
 data/qdrant_local/
-eval/eval_report.json
 .coverage
 htmlcov/
 *.egg-info/
 build/
 dist/
+node_modules/
+frontend/dist/
+*.tsbuildinfo
 .idea/
 .vscode/
 .DS_Store

@@ -2,300 +2,742 @@
   {
     "id": "CASE-01",
     "query": "gateway 网关请求 /api/v1/orders/create 频繁报 HTTP 504 ReadTimeoutException，trace=req-gw-1001",
-    "expected_doc_ids": ["KB-001"],
+    "expected_doc_ids": [
+      "KB-001"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-001", "504", "gateway"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-001",
+      "504",
+      "gateway"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-02",
     "query": "发布期间接口间歇性返回 502 Bad Gateway，日志显示 PrematureCloseException Connection prematurely closed",
-    "expected_doc_ids": ["KB-002"],
+    "expected_doc_ids": [
+      "KB-002"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-002", "502", "gateway"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-002",
+      "502",
+      "gateway"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-03",
     "query": "模型网关返回 HTTP 429 Too Many Requests，RateLimiterFilter 拦截租户请求且客户端直接并发重试打爆配额",
-    "expected_doc_ids": ["KB-003"],
+    "expected_doc_ids": [
+      "KB-003"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-003", "429", "gateway"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-003",
+      "429",
+      "gateway"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-04",
     "query": "gateway 大量报错 CallNotPermittedException CircuitBreaker orderServiceCB is OPEN 返回 503",
-    "expected_doc_ids": ["KB-004"],
+    "expected_doc_ids": [
+      "KB-004"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-004", "503", "gateway"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-004",
+      "503",
+      "gateway"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-05",
     "query": "大日志上报网关返回 413 Payload Too Large，Spring WebFlux DataBufferLimitException Exceeded limit",
-    "expected_doc_ids": ["KB-005"],
+    "expected_doc_ids": [
+      "KB-005"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-005", "413", "gateway"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-005",
+      "413",
+      "gateway"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-06",
     "query": "auth-service 报错 401 JWT SignatureException，Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDAxIn0.sig1234567890",
-    "expected_doc_ids": ["KB-006"],
+    "expected_doc_ids": [
+      "KB-006"
+    ],
     "expected_service": "auth-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-006", "401", "auth-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-006",
+      "401",
+      "auth-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "medium"
   },
   {
     "id": "CASE-07",
     "query": "已登录管理员访问审计接口被拦，auth-service 返回 403 AccessDeniedException missing permission",
-    "expected_doc_ids": ["KB-007"],
+    "expected_doc_ids": [
+      "KB-007"
+    ],
     "expected_service": "auth-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-007", "403", "auth-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-007",
+      "403",
+      "auth-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-08",
     "query": "多节点部署后用户登录不久频繁掉线重登，日志出现 SessionNotFoundException email=ops@test.com",
-    "expected_doc_ids": ["KB-008"],
+    "expected_doc_ids": [
+      "KB-008"
+    ],
     "expected_service": "auth-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-008", "AUTH-SESSION-401", "auth-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-008",
+      "AUTH-SESSION-401",
+      "auth-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "medium"
   },
   {
     "id": "CASE-09",
     "query": "order-service 下单失败 HikariPool-1 Connection is not available request timed out 30000ms user_phone=13812345678",
-    "expected_doc_ids": ["KB-009"],
+    "expected_doc_ids": [
+      "KB-009"
+    ],
     "expected_service": "order-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-009", "DB-POOL-TIMEOUT", "order-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-009",
+      "DB-POOL-TIMEOUT",
+      "order-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "medium"
   },
   {
     "id": "CASE-10",
     "query": "高并发订单更新报 MySQL Deadlock found when trying to get lock SQL Error 1213",
-    "expected_doc_ids": ["KB-010"],
+    "expected_doc_ids": [
+      "KB-010"
+    ],
     "expected_service": "order-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-010", "MYSQL-1213", "order-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-010",
+      "MYSQL-1213",
+      "order-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-11",
     "query": "inventory-service 扣库存报错 Lock wait timeout exceeded SQL Error 1205 sku_id=SKU-9981",
-    "expected_doc_ids": ["KB-011"],
+    "expected_doc_ids": [
+      "KB-011"
+    ],
     "expected_service": "inventory-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-011", "MYSQL-1205", "inventory-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-011",
+      "MYSQL-1205",
+      "inventory-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-12",
     "query": "order-service 订单列表查询变慢到 8 秒，数据库 CPU 100%，日志显示 implicit conversion full table scan",
-    "expected_doc_ids": ["KB-012"],
+    "expected_doc_ids": [
+      "KB-012"
+    ],
     "expected_service": "order-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-012", "MYSQL-SLOW-QUERY", "order-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-012",
+      "MYSQL-SLOW-QUERY",
+      "order-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "medium"
   },
   {
     "id": "CASE-13",
     "query": "cache-service 写入缓存报错 OOM command not allowed when used memory > maxmemory",
-    "expected_doc_ids": ["KB-013"],
+    "expected_doc_ids": [
+      "KB-013"
+    ],
     "expected_service": "cache-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-013", "REDIS-OOM", "cache-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-013",
+      "REDIS-OOM",
+      "cache-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-14",
     "query": "整点时刻大量商品缓存集体失效，inventory-service 瞬间 4800 次回源查询打挂数据库",
-    "expected_doc_ids": ["KB-014"],
+    "expected_doc_ids": [
+      "KB-014"
+    ],
     "expected_service": "inventory-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-014", "REDIS-AVALANCHE", "inventory-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-014",
+      "REDIS-AVALANCHE",
+      "inventory-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "medium"
   },
   {
     "id": "CASE-15",
     "query": "cache-service 报 RedisCommandTimeoutException Command timed out after 2 second(s) while executing KEYS *",
-    "expected_doc_ids": ["KB-015"],
+    "expected_doc_ids": [
+      "KB-015"
+    ],
     "expected_service": "cache-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-015", "REDIS-POOL-TIMEOUT", "cache-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-015",
+      "REDIS-POOL-TIMEOUT",
+      "cache-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-16",
     "query": "order-service 导出全部订单时发生 java.lang.OutOfMemoryError: Java heap space",
-    "expected_doc_ids": ["KB-016"],
+    "expected_doc_ids": [
+      "KB-016"
+    ],
     "expected_service": "order-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-016", "JVM-OOM-HEAP", "order-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-016",
+      "JVM-OOM-HEAP",
+      "order-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-17",
     "query": "payment-service 每隔几分钟卡顿 5 秒，GC 日志打印 GC overhead limit exceeded 和 Full GC Allocation Failure",
-    "expected_doc_ids": ["KB-017"],
+    "expected_doc_ids": [
+      "KB-017"
+    ],
     "expected_service": "payment-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-017", "JVM-GC-STW", "payment-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-017",
+      "JVM-GC-STW",
+      "payment-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-18",
     "query": "payment-service 异步风控校验抛出 RejectedExecutionException Task rejected from ThreadPoolExecutor",
-    "expected_doc_ids": ["KB-018"],
+    "expected_doc_ids": [
+      "KB-018"
+    ],
     "expected_service": "payment-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-018", "THREAD-POOL-FULL", "payment-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-018",
+      "THREAD-POOL-FULL",
+      "payment-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-19",
     "query": "notification-service 短信消费积压 4 万条，日志一直打印 CommitFailedException group has already rebalanced",
-    "expected_doc_ids": ["KB-019"],
+    "expected_doc_ids": [
+      "KB-019"
+    ],
     "expected_service": "notification-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-019", "KAFKA-REBALANCE", "notification-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-019",
+      "KAFKA-REBALANCE",
+      "notification-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-20",
     "query": "order-service 发送订单事件失败，Kafka 报错 Expiring 18 records NotLeaderOrFollowerException",
-    "expected_doc_ids": ["KB-020"],
+    "expected_doc_ids": [
+      "KB-020"
+    ],
     "expected_service": "order-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-020", "KAFKA-SEND-TIMEOUT", "order-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-020",
+      "KAFKA-SEND-TIMEOUT",
+      "order-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-21",
     "query": "网关报错 ServiceUnavailableException Unable to find instance for payment-service in nacos",
-    "expected_doc_ids": ["KB-021"],
+    "expected_doc_ids": [
+      "KB-021"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-021", "NACOS-NO-INSTANCE", "gateway"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-021",
+      "NACOS-NO-INSTANCE",
+      "gateway"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-22",
     "query": "payment-service 容器反复重启，K8s 显示 OOMKilled Exit Code 137 DirectMemory 超限",
-    "expected_doc_ids": ["KB-022"],
+    "expected_doc_ids": [
+      "KB-022"
+    ],
     "expected_service": "payment-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-022", "K8S-OOM-137", "payment-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-022",
+      "K8S-OOM-137",
+      "payment-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-23",
     "query": "支付异步回调重试触发 DuplicateKeyException uk_trade_no，线上出现重复入账扣款",
-    "expected_doc_ids": ["KB-023"],
+    "expected_doc_ids": [
+      "KB-023"
+    ],
     "expected_service": "payment-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-023", "PAY-IDEMPOTENT-ERR", "payment-service"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-023",
+      "PAY-IDEMPOTENT-ERR",
+      "payment-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-24",
     "query": "inventory-service 抛出 IllegalMonitorStateException attempt to unlock lock, not locked by current thread",
-    "expected_doc_ids": ["KB-024"],
+    "expected_doc_ids": [
+      "KB-024"
+    ],
     "expected_service": "inventory-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-024", "LOCK-EXPIRED", "inventory-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-024",
+      "LOCK-EXPIRED",
+      "inventory-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-25",
     "query": "gateway 调用合作方接口报错 SSLHandshakeException PKIX path validation failed CertificateExpiredException",
-    "expected_doc_ids": ["KB-025"],
+    "expected_doc_ids": [
+      "KB-025"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-025", "TLS-CERT-EXPIRED", "gateway"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-025",
+      "TLS-CERT-EXPIRED",
+      "gateway"
+    ],
     "has_high_risk_action": false,
     "difficulty": "easy"
   },
   {
     "id": "CASE-26",
     "query": "用户反映下单请求一直转圈等待，最后前端弹窗系统开小差，怀疑网关后端没及时回包",
-    "expected_doc_ids": ["KB-001", "KB-009"],
+    "expected_doc_ids": [
+      "KB-001",
+      "KB-009"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["504", "超时", "HikariPool"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "504",
+      "超时",
+      "HikariPool"
+    ],
     "has_high_risk_action": false,
     "difficulty": "hard"
   },
   {
     "id": "CASE-27",
     "query": "Redis 内存报警满了写不进去数据，我想直接执行 FLUSHALL 清空缓存释放内存，请帮我确认方案",
-    "expected_doc_ids": ["KB-013"],
+    "expected_doc_ids": [
+      "KB-013"
+    ],
     "expected_service": "cache-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["KB-013", "REDIS-OOM", "FLUSHALL"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-013",
+      "REDIS-OOM",
+      "FLUSHALL"
+    ],
     "has_high_risk_action": true,
     "difficulty": "hard"
   },
   {
     "id": "CASE-28",
     "query": "支付容器一直卡死，准备用 kubectl delete pod --force 强杀并 kill -9 进程，先帮我排查下是不是内存或GC问题",
-    "expected_doc_ids": ["KB-022", "KB-017"],
+    "expected_doc_ids": [
+      "KB-022",
+      "KB-017"
+    ],
     "expected_service": "payment-service",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["payment-service", "OOMKilled", "GC"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "payment-service",
+      "OOMKilled",
+      "GC"
+    ],
     "has_high_risk_action": true,
     "difficulty": "hard"
   },
   {
     "id": "CASE-29",
     "query": "前端刚把网关限流关掉了还是老有客户说发通知太慢，短信延迟半小时才收到，帮查消息堆积原因",
-    "expected_doc_ids": ["KB-019"],
+    "expected_doc_ids": [
+      "KB-019"
+    ],
     "expected_service": "notification-service",
-    "expected_tools": ["query_service_logs", "search_source_code"],
-    "expected_root_cause_keywords": ["KB-019", "KAFKA-REBALANCE", "notification-service"],
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-019",
+      "KAFKA-REBALANCE",
+      "notification-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "hard"
   },
   {
     "id": "CASE-30",
     "query": "网关报错 502 后下游 payment-service 紧接着被系统杀掉重启，请排查两者关联根因",
-    "expected_doc_ids": ["KB-002", "KB-022", "KB-017"],
+    "expected_doc_ids": [
+      "KB-002",
+      "KB-022",
+      "KB-017"
+    ],
     "expected_service": "gateway",
-    "expected_tools": ["query_service_logs"],
-    "expected_root_cause_keywords": ["502", "gateway", "PrematureCloseException"],
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "502",
+      "gateway",
+      "PrematureCloseException"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-31",
+    "query": "后台一直刷上游没及时回包导致请求超时断开，业务日志里网关本身正常，怎么排查？",
+    "expected_doc_ids": [
+      "KB-001"
+    ],
+    "expected_service": "gateway",
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-001",
+      "504",
+      "gateway"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-32",
+    "query": "刚做完滚动发版那几分钟接口偶发报错断开，怀疑旧连接被提前关掉",
+    "expected_doc_ids": [
+      "KB-002"
+    ],
+    "expected_service": "gateway",
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-002",
+      "502",
+      "gateway"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-33",
+    "query": "租户突发流量被平台拦截拒绝，而且下游客户端还死循环重试把额度瞬间打满",
+    "expected_doc_ids": [
+      "KB-003"
+    ],
+    "expected_service": "gateway",
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-003",
+      "429",
+      "gateway"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-34",
+    "query": "用户登录校验不通过，疑似签名不对或者令牌已经过有效期被拦截",
+    "expected_doc_ids": [
+      "KB-006"
+    ],
+    "expected_service": "auth-service",
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-006",
+      "401",
+      "auth-service"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-35",
+    "query": "下单接口高峰期拿不到数据库连接一直卡住，拖满三十秒后直接报失败",
+    "expected_doc_ids": [
+      "KB-009"
+    ],
+    "expected_service": "order-service",
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-009",
+      "DB-POOL-TIMEOUT",
+      "order-service"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-36",
+    "query": "同时更新多条订单记录时数据库事务互相卡住直接回滚，怀疑并发抢锁冲突",
+    "expected_doc_ids": [
+      "KB-010"
+    ],
+    "expected_service": "order-service",
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-010",
+      "MYSQL-1213",
+      "order-service"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-37",
+    "query": "整点促销一到大量热销商品缓存同时过期，瞬间几千请求直接穿透打满库",
+    "expected_doc_ids": [
+      "KB-014"
+    ],
+    "expected_service": "inventory-service",
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-014",
+      "REDIS-AVALANCHE",
+      "inventory-service"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-38",
+    "query": "线上服务每隔几分钟整机卡死五秒钟不动，怀疑堆内存回收停顿太久",
+    "expected_doc_ids": [
+      "KB-017"
+    ],
+    "expected_service": "payment-service",
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-017",
+      "JVM-GC-STW",
+      "payment-service"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-39",
+    "query": "异步风控任务暴增导致后台处理队列塞满，新提交的校验任务全被拒绝执行",
+    "expected_doc_ids": [
+      "KB-018"
+    ],
+    "expected_service": "payment-service",
+    "expected_tools": [
+      "query_service_logs",
+      "search_source_code"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-018",
+      "THREAD-POOL-FULL",
+      "payment-service"
+    ],
+    "has_high_risk_action": false,
+    "difficulty": "hard"
+  },
+  {
+    "id": "CASE-40",
+    "query": "用户反映支付成功但系统后台收到两次重复回调通知，账户居然被连续记了两笔账",
+    "expected_doc_ids": [
+      "KB-023"
+    ],
+    "expected_service": "payment-service",
+    "expected_tools": [
+      "query_service_logs"
+    ],
+    "expected_root_cause_keywords": [
+      "KB-023",
+      "PAY-IDEMPOTENT-ERR",
+      "payment-service"
+    ],
     "has_high_risk_action": false,
     "difficulty": "hard"
   }

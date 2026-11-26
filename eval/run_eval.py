@@ -152,7 +152,7 @@ async def run_evaluation(
     )
 
     md_lines = [
-        "# LogOps-Agent 30 条故障评测报告",
+        f"# LogOps-Agent {total} 条故障评测报告",
         "",
         f"- **知识库分块总数**: {chunk_count}",
         f"- **评测集样本数**: {total}",

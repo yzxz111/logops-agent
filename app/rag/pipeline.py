@@ -110,6 +110,7 @@ class HybridRagPipeline:
                 query,
                 fused[: max(15, top_k * 3)],
                 service_hint=service_hint,
+                rewritten_queries=rewritten,
                 top_k=top_k,
             )
 

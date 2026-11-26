@@ -1,0 +1,593 @@
+{
+  "total_cases": 40,
+  "indexed_chunks": 125,
+  "rag_comparison": {
+    "bm25_only": {
+      "Recall@1": 0.9,
+      "Recall@3": 0.975,
+      "Recall@5": 1.0,
+      "MRR": 0.9437
+    },
+    "vector_only": {
+      "Recall@1": 0.95,
+      "Recall@3": 0.975,
+      "Recall@5": 0.975,
+      "MRR": 0.9625
+    },
+    "hybrid_rrf": {
+      "Recall@1": 0.95,
+      "Recall@3": 0.975,
+      "Recall@5": 0.975,
+      "MRR": 0.9625
+    },
+    "agentic": {
+      "Recall@1": 1.0,
+      "Recall@3": 1.0,
+      "Recall@5": 1.0,
+      "MRR": 1.0
+    }
+  },
+  "agent_metrics": {
+    "tool_accuracy": 1.0,
+    "root_cause_hit_rate": 1.0,
+    "high_risk_interception_rate": 1.0,
+    "secondary_retrieval_triggered_cases": 0,
+    "tool_context_compression_ratio": 0.322
+  },
+  "case_details": [
+    {
+      "id": "CASE-01",
+      "status": "completed",
+      "top_doc": "KB-001",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1632,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-02",
+      "status": "completed",
+      "top_doc": "KB-002",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1649,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-03",
+      "status": "completed",
+      "top_doc": "KB-003",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1605,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-04",
+      "status": "completed",
+      "top_doc": "KB-004",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1561,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-05",
+      "status": "completed",
+      "top_doc": "KB-005",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1359,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-06",
+      "status": "completed",
+      "top_doc": "KB-006",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1770,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-07",
+      "status": "completed",
+      "top_doc": "KB-007",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1358,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-08",
+      "status": "completed",
+      "top_doc": "KB-008",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1325,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-09",
+      "status": "completed",
+      "top_doc": "KB-009",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1754,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-10",
+      "status": "completed",
+      "top_doc": "KB-010",
+      "tools": [
+        "query_service_logs"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1279,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-11",
+      "status": "completed",
+      "top_doc": "KB-011",
+      "tools": [
+        "query_service_logs"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1218,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-12",
+      "status": "completed",
+      "top_doc": "KB-012",
+      "tools": [
+        "query_service_logs"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1320,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-13",
+      "status": "completed",
+      "top_doc": "KB-013",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1139,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-14",
+      "status": "completed",
+      "top_doc": "KB-014",
+      "tools": [
+        "query_service_logs"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1244,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-15",
+      "status": "completed",
+      "top_doc": "KB-015",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1376,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-16",
+      "status": "completed",
+      "top_doc": "KB-016",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1633,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-17",
+      "status": "completed",
+      "top_doc": "KB-017",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1363,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-18",
+      "status": "completed",
+      "top_doc": "KB-018",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1964,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-19",
+      "status": "completed",
+      "top_doc": "KB-019",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1393,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-20",
+      "status": "completed",
+      "top_doc": "KB-020",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1303,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-21",
+      "status": "completed",
+      "top_doc": "KB-021",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 838,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-22",
+      "status": "completed",
+      "top_doc": "KB-022",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1384,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-23",
+      "status": "completed",
+      "top_doc": "KB-023",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1418,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-24",
+      "status": "completed",
+      "top_doc": "KB-024",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1624,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-25",
+      "status": "completed",
+      "top_doc": "KB-025",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1423,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-26",
+      "status": "completed",
+      "top_doc": "KB-001",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1655,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-27",
+      "status": "completed",
+      "top_doc": "KB-013",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 6,
+      "tokens": 1238,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-28",
+      "status": "completed",
+      "top_doc": "KB-022",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 6,
+      "tokens": 1500,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-29",
+      "status": "completed",
+      "top_doc": "KB-019",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1410,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-30",
+      "status": "completed",
+      "top_doc": "KB-002",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 850,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-31",
+      "status": "completed",
+      "top_doc": "KB-001",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1640,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-32",
+      "status": "completed",
+      "top_doc": "KB-002",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1650,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-33",
+      "status": "completed",
+      "top_doc": "KB-003",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1624,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-34",
+      "status": "completed",
+      "top_doc": "KB-006",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1784,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-35",
+      "status": "completed",
+      "top_doc": "KB-009",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1782,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-36",
+      "status": "completed",
+      "top_doc": "KB-010",
+      "tools": [
+        "query_service_logs"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1290,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-37",
+      "status": "completed",
+      "top_doc": "KB-014",
+      "tools": [
+        "query_service_logs"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1255,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-38",
+      "status": "completed",
+      "top_doc": "KB-017",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1385,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-39",
+      "status": "completed",
+      "top_doc": "KB-018",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1947,
+      "retry_count": 0
+    },
+    {
+      "id": "CASE-40",
+      "status": "completed",
+      "top_doc": "KB-023",
+      "tools": [
+        "query_service_logs",
+        "search_source_code"
+      ],
+      "tool_matched": true,
+      "root_cause_matched": true,
+      "steps": 5,
+      "tokens": 1403,
+      "retry_count": 0
+    }
+  ]
+}

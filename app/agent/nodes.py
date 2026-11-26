@@ -27,13 +27,13 @@ _KNOWN_SERVICES = [
 ]
 
 _SERVICE_KEYWORDS: dict[str, list[str]] = {
-    "gateway": ["网关", "gateway", "504", "502", "429", "503", "413", "nacos", "pkix", "ssl", "tls", "ratelimit"],
-    "order-service": ["订单", "order", "hikari", "1213", "deadlock", "慢查询", "slowquery", "outofmemory", "heap", "kafka producer"],
-    "auth-service": ["认证", "登录", "鉴权", "auth", "jwt", "401", "403", "rbac", "session"],
-    "payment-service": ["支付", "payment", "pay", "full gc", "stw", "137", "oomkilled", "rejectedexecution", "线程池", "回调", "幂等"],
-    "inventory-service": ["库存", "inventory", "sku", "1205", "lock wait", "缓存雪崩", "击穿", "redisson", "分布式锁", "watch dog"],
+    "gateway": ["网关", "gateway", "504", "502", "429", "503", "413", "nacos", "pkix", "ssl", "tls", "ratelimit", "发版", "旧连接", "没及时回包", "未及时回包", "突发流量"],
+    "order-service": ["订单", "order", "hikari", "1213", "deadlock", "慢查询", "slowquery", "outofmemory", "heap", "kafka producer", "数据库连接", "抢锁"],
+    "auth-service": ["认证", "登录", "鉴权", "auth", "jwt", "401", "403", "rbac", "session", "令牌", "签名"],
+    "payment-service": ["支付", "payment", "pay", "full gc", "stw", "137", "oomkilled", "rejectedexecution", "线程池", "回调", "幂等", "内存回收", "队列塞满", "两笔账"],
+    "inventory-service": ["库存", "inventory", "sku", "1205", "lock wait", "缓存雪崩", "击穿", "redisson", "分布式锁", "watch dog", "缓存同时过期"],
     "cache-service": ["redis", "cache", "oom command", "maxmemory", "lettuce", "jedis", "keys *"],
-    "notification-service": ["通知", "短信", "notification", "rebalance", "commitfailed", "积压", "lag", "consumer"],
+    "notification-service": ["通知", "短信", "notification", "rebalance", "commitfailed", "积压", "lag", "consumer", "消息堆积"],
 }
 
 _SOURCE_HINT_PATTERNS: list[tuple[re.Pattern[str], str]] = [
@@ -218,6 +218,15 @@ class AgentNodes:
                 "total_matches": log_res.total_matches,
                 "raw_chars": raw_chars,
                 "compressed_chars": comp_chars,
+                "locations": [
+                    {
+                        "path": f"data/mock_logs/{s.file}",
+                        "start_line": s.start_line,
+                        "end_line": s.end_line,
+                        "matched_line": s.matched_line,
+                    }
+                    for s in log_res.slices
+                ],
             })
             if log_res.compressed_summary:
                 tool_chunks.append(f"### 日志切片 ({inferred_svc})\n{log_res.compressed_summary}")
@@ -243,6 +252,15 @@ class AgentNodes:
                 "total_matches": src_res.total_matches,
                 "raw_chars": raw_chars,
                 "compressed_chars": comp_chars,
+                "locations": [
+                    {
+                        "path": f"data/mock_source/{m.file}",
+                        "start_line": m.start_line,
+                        "end_line": m.end_line,
+                        "matched_line": m.matched_line,
+                    }
+                    for m in src_res.matches
+                ],
             })
             if src_res.compressed_summary:
                 tool_chunks.append(f"### 源码片段 ({src_kw})\n{src_res.compressed_summary}")
@@ -362,6 +380,15 @@ class AgentNodes:
                 "total_matches": log_res.total_matches,
                 "raw_chars": sum(len(s.content) for s in log_res.slices),
                 "compressed_chars": len(log_res.compressed_summary),
+                "locations": [
+                    {
+                        "path": f"data/mock_logs/{s.file}",
+                        "start_line": s.start_line,
+                        "end_line": s.end_line,
+                        "matched_line": s.matched_line,
+                    }
+                    for s in log_res.slices
+                ],
             })
             if log_res.compressed_summary:
                 tool_ctx = f"### 二次检索补充日志 ({fallback_svc})\n{log_res.compressed_summary}"
